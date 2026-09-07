@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="resource-version" content="2.0"><meta name="description" content="A complete, offline 85-minute Functional Skills Level 1 introductory maths lesson: place value, whole numbers up to one million, practice and answers, plus a final code mission."><title>Make numbers make sense · Functional Skills Level 1</title><style>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="resource-version" content="3.0-viewboard"><meta name="description" content="A complete, offline 85-minute Functional Skills Level 1 introductory maths lesson: place value, whole numbers up to one million, practice and answers, plus a final code mission."><title>Make numbers make sense · Functional Skills Level 1</title><style>
 :root{--ink:#182d35;--muted:#51636b;--paper:#f8f6f0;--card:#fffefa;--shell:#e9eeeb;--line:#c6d1ca;--teal:#086b58;--soft-teal:#deeee5;--purple:#5a479c;--soft-purple:#ede8fa;--orange:#ac451f;--soft-orange:#fae8db;--lime:#ddeb9c;--focus:#b33209;--shadow:0 20px 65px #152d3520;--body-size:29px;--small-size:23px;--title-size:55px;color-scheme:light}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:'Aptos','Segoe UI',Arial,sans-serif}body{background:var(--shell);color:var(--ink);overflow:hidden}button,input,select{font:inherit;color:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.46}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--focus);outline-offset:4px}button{touch-action:manipulation}button,select{min-height:40px}button:focus:not(:focus-visible){outline:none}a{color:var(--teal);text-underline-offset:3px}p{margin:0}h1,h2,h3{margin:0;font-weight:750}h2:focus{outline:none}strong,b{font-weight:750}em{font-style:normal;color:var(--teal)}[hidden]{display:none!important}u{text-decoration-thickness:3px;text-underline-offset:8px}svg{display:block;width:100%;height:auto}input,select{background:var(--card);border:1.5px solid var(--line);border-radius:9px}input{padding:9px 12px}select{padding:7px 32px 7px 10px}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;clip-path:inset(50%);overflow:hidden;white-space:nowrap}.skip-link{position:fixed;top:-60px;left:12px;z-index:200;background:var(--card);padding:12px}.skip-link:focus{top:12px}
 .topbar{height:61px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--line);gap:16px;background:var(--paper)}.brand{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:750;letter-spacing:.04em;white-space:nowrap}.brand-mark{display:grid;place-items:center;width:32px;height:32px;background:var(--ink);color:var(--paper);border-radius:9px;font-size:16px}.brand small{display:block;font-size:11px;font-weight:550;color:var(--muted);letter-spacing:.09em}.toolbar{display:flex;align-items:center;gap:7px}.tool-btn{background:transparent;border:1px solid transparent;padding:8px 12px;border-radius:9px;font-size:13px;font-weight:650;min-height:36px}.tool-btn:hover{border-color:var(--line);background:var(--card)}.tool-btn.icon-tool{padding:8px 9px}.duration-badge{font-size:12px;font-weight:750;border:1px solid var(--line);border-radius:30px;padding:5px 9px;color:var(--muted)}
@@ -126,8 +126,157 @@ body[data-theme="dark"]{--ink:#eef5ed;--muted:#c2d1cc;--paper:#102528;--card:#1b
   .menu-phase-heading{align-items:flex-start;flex-direction:column;gap:4px}.slide-menu-grid{grid-template-columns:1fr}
 }
 
+
+/* v3 · Touchscreen presentation controls. The original lesson and print layouts remain. */
+@media screen {
+  button,select,input[type="button"],input[type="submit"]{touch-action:manipulation;-ms-touch-action:manipulation}
+  button{ -webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+  button:active:not(:disabled),button.touch-pressed:not(:disabled){box-shadow:inset 0 0 0 3px var(--teal)}
+  .digit-card{touch-action:none;-ms-touch-action:none}
+  .digit-card.touch-dragging{opacity:.6;transform:scale(.98)}
+  .board-tools{border:1px solid var(--teal);color:var(--teal);background:var(--soft-teal);white-space:nowrap;min-height:48px}
+  .modal{max-height:90vh;max-height:90dvh}
+  .modal-close{min-width:90px;min-height:52px;font-size:17px;flex-shrink:0}
+  .modal-body{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  .toast{pointer-events:none}
+  .board-mode .topbar{height:auto;min-height:64px;padding:5px 18px;gap:12px}
+  .board-mode .toolbar{gap:5px;flex-wrap:wrap}
+  .board-mode .tool-btn{min-height:52px;min-width:52px;font-size:14px;padding:10px 12px;border-color:var(--line)}
+  .board-mode .brand{font-size:13px}
+  .board-mode .brand small{font-size:10px}
+  .board-mode .duration-badge{display:none}
+  .board-mode .chapter-rail{height:58px;padding:3px 18px;gap:7px}
+  .board-mode .chapter-step{min-height:48px;font-size:13px;flex-shrink:0;padding-inline:11px}
+  .board-mode .bottom-bar{height:auto;min-height:88px;gap:12px;padding:12px 18px}
+  .board-mode .nav-buttons{gap:9px;flex-shrink:0}
+  .board-mode .nav-btn{min-height:56px;font-size:17px;min-width:142px;padding:12px 17px}
+  .board-mode .nav-btn.next{min-width:178px}
+  .board-mode .slide-index{min-height:56px;min-width:86px;font-size:16px;border:1px solid var(--line);background:var(--card)}
+  .board-mode .phase-progress{min-width:100px}
+  .board-mode .keyboard-hint{display:none}
+  .board-mode .timer-label-btn,.board-mode .timer-play{min-height:56px;min-width:56px;font-size:16px}
+  .board-mode .timer-widget{flex-shrink:0}
+  .board-mode #viewport{padding:8px 12px}
+  .board-mode .slide button,.board-mode .slide input,.board-mode .slide select{min-height:var(--board-target,60px);min-width:var(--board-target,60px)}
+  .board-mode .slide{padding-top:30px;gap:15px}
+  .board-mode .hero-slide{padding-top:45px}
+  .board-mode .eyebrow{margin-bottom:10px}
+  .board-mode .pair-switch{padding:3px;gap:5px}
+  .board-mode .pair-switch button{font-size:21px;padding:7px 19px}
+  .board-mode .pair-switch .is-active{box-shadow:inset 0 -4px 0 currentColor}
+  .board-mode .explorer-top{flex-wrap:wrap;gap:16px}
+  .board-mode .explorer-custom{gap:10px}
+  .board-mode .explorer-custom input{width:200px}
+  .board-mode .code-form{grid-template-columns:auto 200px auto auto auto;gap:10px 14px;padding:12px 18px}
+  .board-mode .code-form input{width:200px}
+  .board-mode .code-form button{font-size:19px;padding-inline:13px}
+  .board-mode .modal button,.board-mode .modal input,.board-mode .modal select{min-height:52px;min-width:52px}
+  .board-mode .modal .small-btn{font-size:16px}
+  .board-mode .modal .segmented{flex-wrap:wrap}
+  .board-mode .modal .segmented button{font-size:16px}
+  .board-mode .modal .timer-edit{flex-wrap:wrap}
+  .board-mode .modal .timer-edit input{min-width:90px}
+  .board-mode .plan-table button{min-width:70px}
+  .board-mode .blackout button{min-height:64px;font-size:21px;padding:15px 24px}
+  .board-mode .slide-enter{animation:none}
+  .board-mode .pv-button{min-height:180px}
+  .board-mode .digit-card{min-height:144px}
+  .board-panel-intro{padding:16px 18px;background:var(--soft-teal);border-left:4px solid var(--teal);border-radius:9px;line-height:1.5;font-size:17px;margin-bottom:18px}
+  .board-setting{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .board-setting>div{min-width:0}
+  .board-setting strong{display:block;font-size:17px}
+  .board-setting p{font-size:14px;color:var(--muted);margin-top:5px;line-height:1.5}
+  .board-setting button{min-width:134px;min-height:56px;font-size:16px}
+  .board-actions{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+  .board-actions button{flex:1 1 150px;font-size:16px;min-height:56px}
+  .board-test{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;align-items:center;padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--card);margin:18px 0}
+  .board-test button{min-height:76px;font-size:21px}
+  .board-test p{font-size:16px;line-height:1.5}
+  .board-test strong{font-size:27px;color:var(--teal)}
+  .board-help{font-size:15px;line-height:1.6;margin:15px 0}
+  .board-help strong{color:var(--ink)}
+  .board-source{font-size:13px;line-height:1.5;color:var(--muted)}
+  .board-source a{display:inline-block;padding:9px 0;min-height:44px}
+  .keypad-wrap{max-width:420px;margin:0 auto}
+  .keypad-label{font-size:16px;color:var(--muted);margin-bottom:8px}
+  .keypad-display{min-height:69px;padding:12px 16px;background:var(--card);border:2px solid var(--teal);border-radius:12px;font-size:34px;letter-spacing:.07em;font-variant-numeric:tabular-nums;text-align:right;overflow-wrap:anywhere}
+  .keypad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
+  .keypad-grid button{min-height:60px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-size:26px;font-weight:700}
+  .keypad-grid button[data-pad-key="clear"],.keypad-grid button[data-pad-key="back"]{font-size:17px;background:var(--shell)}
+  .keypad-done{width:100%;min-height:58px;margin-top:12px;font-size:20px}
+  .keypad-status{font-size:15px;line-height:1.4;min-height:22px;margin-top:10px;color:var(--muted)}
+}
+@media screen and (min-width:901px) and (max-width:1250px){
+  .board-mode .topbar .brand{display:none}
+  .board-mode .topbar{justify-content:center}
+  .board-mode .phase-progress{display:none}
+  .board-mode .chapter-step{font-size:12px;padding-inline:8px;gap:5px}
+  .board-mode .chapter-number{display:none}
+  .board-mode .bottom-bar{justify-content:space-between}
+}
+@media screen and (max-width:900px){
+  .board-mode .topbar{padding:8px 12px;flex-wrap:wrap}
+  .board-mode .toolbar{justify-content:flex-start}
+  .board-mode .tool-btn{font-size:13px}
+  .board-mode .chapter-rail{padding-inline:12px;height:58px;overflow-x:auto}
+  .board-mode .chapter-step{flex:0 0 auto}
+  .board-mode #viewport{height:auto;min-height:0}
+  .board-mode .slide{padding-top:25px}
+  .board-mode .bottom-bar{gap:10px;flex-wrap:wrap;padding:10px 12px}
+  .board-mode .nav-buttons{flex:1;justify-content:center}
+  .board-mode .nav-btn{font-size:15px;min-width:115px}
+  .board-mode .nav-btn.next{min-width:155px}
+  .board-mode .phase-progress{display:none}
+  .board-mode .code-form{grid-template-columns:1fr 1fr}
+  .board-mode .code-form input{width:100%}
+  .board-mode .pv-button{min-height:140px}
+  .board-mode .digit-card{min-height:120px}
+  .board-mode .explorer-custom{flex-wrap:wrap}
+  .board-mode .slide input{font-size:22px}
+  .board-mode .slide button{white-space:normal}
+  .board-mode .toast{bottom:160px}
+}
+@media screen and (max-width:540px){
+  .board-mode .nav-buttons{flex-basis:100%;gap:7px}
+  .board-mode .nav-btn{font-size:13px;min-width:96px;padding-inline:10px}
+  .board-mode .nav-btn.next{min-width:142px}
+  .board-mode .slide-index{min-width:66px;font-size:14px}
+  .board-mode .timer-play{display:block}
+  .board-mode .bottom-bar{padding:8px;gap:8px}
+  .board-mode .timer-label-btn{padding-inline:8px}
+  .board-mode .focus-exit{order:0;flex-basis:auto}
+  .board-mode .code-form{grid-template-columns:1fr 1fr}
+  .board-mode .code-form>label,.board-mode .code-form>input{grid-column:1/-1}
+  .board-mode .code-form .timer-for-slide{grid-column:1/-1}
+  .board-mode .pair-switch button{font-size:16px;padding-inline:10px}
+  .board-mode .digit-card{min-height:110px;min-width:0}
+  .board-setting{align-items:flex-start;flex-direction:column;gap:10px}
+  .board-test{grid-template-columns:1fr}
+  .keypad-grid{gap:8px}.keypad-grid button{min-height:54px}
+  .board-mode .modal-head h2{font-size:21px}.modal-head{gap:10px}
+}
+@media screen and (min-width:901px){
+  .code-form{grid-template-columns:auto 200px auto auto auto}
+  .code-form>input{width:200px}
+  .code-form button{font-size:19px}
+  .board-mode .mission-grid .card{padding:13px 18px;gap:7px;min-height:170px}
+  .board-mode .mission-task-slide .slide-content{gap:14px}
+}
+/* Reclaim decorative spacing, not teaching text, on the denser activity slides. */
+@media screen and (min-width:901px){
+  body.board-mode #slide-9 .digit-questions .card{padding:16px 24px;gap:7px}
+  body.board-mode #slide-9 .callout{padding:12px 22px}
+  body.board-mode #slide-9 .slide-content{gap:15px}
+  body.board-mode #slide-12 .card{padding:15px 24px;gap:8px}
+  body.board-mode #slide-12 .grid{gap:14px}
+  body.board-mode #slide-25 .slide-content{gap:10px}
+  body.board-mode #slide-25 .digit-card{height:120px;min-height:120px}
+  body.board-mode #slide-25 .builder-questions .card{padding:14px 20px;gap:8px}
+  body.board-mode .mission-grid .card{padding:12px 18px;gap:7px;min-height:164px}
+}
+
 </style></head>
-<body data-theme="light" data-tint="none" data-text="standard">
+<body class="board-mode" data-theme="light" data-tint="none" data-text="standard">
 <a href="#stage" class="skip-link">Skip to the presentation</a>
 <header class="topbar"><div class="brand"><span class="brand-mark" aria-hidden="true">N°</span><span>NUMBER SENSE<small>FUNCTIONAL SKILLS · LEVEL 1</small></span><span class="duration-badge" id="durationBadge">85 min</span></div><nav class="toolbar" aria-label="Presentation tools"><button class="tool-btn" type="button" data-open="plan">Lesson plan</button><button class="tool-btn" type="button" data-open="slides">Slides</button><button class="tool-btn" type="button" data-open="notes">Teacher notes</button><button type="button" class="tool-btn" data-open="display">Display</button><button type="button" class="tool-btn" data-open="keys" title="Keyboard shortcuts (?)">Keys <span aria-hidden="true">?</span></button><button type="button" class="tool-btn" id="focusButton" aria-pressed="false" title="Larger slide, fewer controls (P)">Focus view</button><button class="tool-btn icon-tool" type="button" id="fullscreenButton" aria-label="Enter full screen" title="Full screen (F)">⛶ Full screen</button></nav></header>
 <nav id="chapterRail" class="chapter-rail" aria-label="Lesson sections"></nav>
@@ -137,7 +286,7 @@ body[data-theme="dark"]{--ink:#eef5ed;--muted:#c2d1cc;--paper:#102528;--card:#1b
 <section id="slide-4" class="slide kind-answers " aria-labelledby="title-4" data-n="4" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Answers</span><span>Welcome</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="3" aria-pressed="false">Questions</button><button type="button" data-pair-slide="4" aria-pressed="true" class="is-active">Answers</button></div><span class="slide-time" data-slide-time="4">2 min</span></div><h2 id="title-4" tabindex="-1">Starting check: let’s compare.</h2><p class="lede">Tick what worked. Correct one thing you now understand.</p></header><div class="slide-content"><div class="grid cols-2 "><article class="card answer-card"><span class="card-label">A</span><div class="card-main">406</div><p class=card-sub>4 hundreds, no tens, 6 ones.</p></article><article class="card answer-card"><span class="card-label">B</span><div class="card-main">70</div><p class=card-sub>The 7 is in the tens place: 7 × 10.</p></article><article class="card answer-card"><span class="card-label">C</span><div class="card-main">1,250</div><p class=card-sub>The thousands and hundreds match. Compare the tens: 5 tens is more than 0 tens.</p></article><article class="card answer-card"><span class="card-label">D</span><div class="card-main">£60</div><p class=card-sub>£20 + £20 + £20 = £60.</p></article></div><div class="callout "><strong>Keep this distinction:</strong> the digit is <strong>7</strong>; its value in 572 is <strong>70</strong>.</div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Correct it. Explain it. Keep going.</span><span>04 / 31</span></footer></section>
 <section id="slide-5" class="slide kind-learn " aria-labelledby="title-5" data-n="5" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Learn</span><span>Place value</span><span class="slide-time" data-slide-time="5">2 min</span></div><h2 id="title-5" tabindex="-1">A digit has a job.</h2><p class="lede">The same digit can have a different value in a different place.</p></header><div class="slide-content"><div class="split"><div class="definitions"><div><strong>Digit</strong><p>A symbol: 0, 1, 2, 3, 4, 5, 6, 7, 8 or 9.</p></div><div><strong>Place</strong><p>The position of a digit in a number.</p></div><div><strong>Value</strong><p>How much that digit is worth in its place.</p></div></div><div class="number-model"><div class="model-number"><span class="purple-text">3</span><span class="teal-text">4</span><span class="orange-text">7</span></div><svg viewBox="0 0 570 150" role="img" aria-label="Three hundreds grids, four tens rods, and seven individual ones represent 347."><rect x="10" y="10" width="80" height="80" rx="2" fill="var(--soft-purple)" stroke="var(--purple)" stroke-width="2"/><path d="M18.0,10 v80 M10,18.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M26.0,10 v80 M10,26.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M34.0,10 v80 M10,34.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M42.0,10 v80 M10,42.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M50.0,10 v80 M10,50.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M58.0,10 v80 M10,58.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M66.0,10 v80 M10,66.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M74.0,10 v80 M10,74.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M82.0,10 v80 M10,82.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><rect x="102" y="10" width="80" height="80" rx="2" fill="var(--soft-purple)" stroke="var(--purple)" stroke-width="2"/><path d="M110.0,10 v80 M102,18.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M118.0,10 v80 M102,26.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M126.0,10 v80 M102,34.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M134.0,10 v80 M102,42.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M142.0,10 v80 M102,50.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M150.0,10 v80 M102,58.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M158.0,10 v80 M102,66.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M166.0,10 v80 M102,74.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M174.0,10 v80 M102,82.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><rect x="194" y="10" width="80" height="80" rx="2" fill="var(--soft-purple)" stroke="var(--purple)" stroke-width="2"/><path d="M202.0,10 v80 M194,18.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M210.0,10 v80 M194,26.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M218.0,10 v80 M194,34.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M226.0,10 v80 M194,42.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M234.0,10 v80 M194,50.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M242.0,10 v80 M194,58.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M250.0,10 v80 M194,66.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M258.0,10 v80 M194,74.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><path d="M266.0,10 v80 M194,82.0 h80" fill="none" stroke="var(--purple)" stroke-width="0.7"/><rect x="310" y="10" width="8" height="80" fill="var(--soft-teal)" stroke="var(--teal)" stroke-width="1.5"/><path d="M310,18 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M310,26 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M310,34 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M310,42 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M310,50 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M310,58 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M310,66 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M310,74 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M310,82 h8" stroke="var(--teal)" stroke-width="0.7"/><rect x="330" y="10" width="8" height="80" fill="var(--soft-teal)" stroke="var(--teal)" stroke-width="1.5"/><path d="M330,18 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M330,26 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M330,34 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M330,42 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M330,50 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M330,58 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M330,66 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M330,74 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M330,82 h8" stroke="var(--teal)" stroke-width="0.7"/><rect x="350" y="10" width="8" height="80" fill="var(--soft-teal)" stroke="var(--teal)" stroke-width="1.5"/><path d="M350,18 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M350,26 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M350,34 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M350,42 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M350,50 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M350,58 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M350,66 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M350,74 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M350,82 h8" stroke="var(--teal)" stroke-width="0.7"/><rect x="370" y="10" width="8" height="80" fill="var(--soft-teal)" stroke="var(--teal)" stroke-width="1.5"/><path d="M370,18 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M370,26 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M370,34 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M370,42 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M370,50 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M370,58 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M370,66 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M370,74 h8" stroke="var(--teal)" stroke-width="0.7"/><path d="M370,82 h8" stroke="var(--teal)" stroke-width="0.7"/><rect x="440" y="20" width="14" height="14" rx="2" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="2"/><rect x="462" y="20" width="14" height="14" rx="2" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="2"/><rect x="484" y="20" width="14" height="14" rx="2" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="2"/><rect x="506" y="20" width="14" height="14" rx="2" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="2"/><rect x="440" y="45" width="14" height="14" rx="2" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="2"/><rect x="462" y="45" width="14" height="14" rx="2" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="2"/><rect x="484" y="45" width="14" height="14" rx="2" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="2"/><g fill="currentColor" font-size="19" font-family="Segoe UI, sans-serif"><text x="145" y="125" text-anchor="middle">3 hundreds</text><text x="345" y="125" text-anchor="middle">4 tens</text><text x="483" y="125" text-anchor="middle">7 ones</text></g></svg><div class="equation">300 + 40 + 7 = <strong>347</strong></div></div></div><div class="callout ">In <strong>347</strong>, the digit <strong>4</strong> is in the <strong>tens</strong> place. Its value is <strong>40</strong>.</div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Whole numbers · Up to one million</span><span>05 / 31</span></footer></section>
 <section id="slide-6" class="slide kind-demonstration " aria-labelledby="title-6" data-n="6" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Demonstration</span><span>Place value</span><span class="slide-time" data-slide-time="6">3 min</span></div><h2 id="title-6" tabindex="-1">Build it. Bundle it.</h2><p class="lede">Our number system groups quantities in tens.</p></header><div class="slide-content"><div class="segmented bundle-options" role="group" aria-label="Choose a grouping demonstration"><button type="button" class="selected" data-bundle="ones" aria-pressed="true">Start with 10 ones</button><button type="button" data-bundle="tens" aria-pressed="false">Then try 10 tens</button></div><div class="bundle-stage"><div class="bundle-card"><h3 id="bundleLeftLabel">10 ones</h3><div id="bundleLeft"><svg viewBox="0 0 410 145" role="img" aria-label="Ten separate ones"><rect x="24" y="17" width="40" height="40" rx="6" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="3"/><rect x="100" y="17" width="40" height="40" rx="6" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="3"/><rect x="176" y="17" width="40" height="40" rx="6" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="3"/><rect x="252" y="17" width="40" height="40" rx="6" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="3"/><rect x="328" y="17" width="40" height="40" rx="6" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="3"/><rect x="24" y="79" width="40" height="40" rx="6" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="3"/><rect x="100" y="79" width="40" height="40" rx="6" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="3"/><rect x="176" y="79" width="40" height="40" rx="6" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="3"/><rect x="252" y="79" width="40" height="40" rx="6" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="3"/><rect x="328" y="79" width="40" height="40" rx="6" fill="var(--soft-orange)" stroke="var(--orange)" stroke-width="3"/></svg></div></div><span class="bundle-arrow" aria-hidden="true">→</span><div class="bundle-card"><h3 id="bundleRightLabel">One new group</h3><div id="bundleResult" class="bundle-result" hidden><svg viewBox="0 0 410 145" role="img" aria-label="One ten, made of ten ones"><g transform="translate(255,23) rotate(90)"><rect x="0" y="0" width="10" height="100" fill="var(--soft-teal)" stroke="var(--teal)" stroke-width="1.5"/><path d="M0,10 h10" stroke="var(--teal)" stroke-width="0.7"/><path d="M0,20 h10" stroke="var(--teal)" stroke-width="0.7"/><path d="M0,30 h10" stroke="var(--teal)" stroke-width="0.7"/><path d="M0,40 h10" stroke="var(--teal)" stroke-width="0.7"/><path d="M0,50 h10" stroke="var(--teal)" stroke-width="0.7"/><path d="M0,60 h10" stroke="var(--teal)" stroke-width="0.7"/><path d="M0,70 h10" stroke="var(--teal)" stroke-width="0.7"/><path d="M0,80 h10" stroke="var(--teal)" stroke-width="0.7"/><path d="M0,90 h10" stroke="var(--teal)" stroke-width="0.7"/></g></svg></div><div id="bundlePlaceholder" class="bundle-placeholder">Same amount.<br>A different grouping.</div></div></div><div class="demo-controls"><button type="button" class="primary" id="bundleButton">Bundle them together</button><p id="bundleStatus" class="status-inline" aria-live="polite">Count ten, then make one new group.</p></div><div class="callout "><strong>The amount stays the same.</strong> Ten ones make one ten. Ten tens make one hundred.</div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Whole numbers · Up to one million</span><span>06 / 31</span></footer></section>
-<section id="slide-7" class="slide kind-explore " aria-labelledby="title-7" data-n="7" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Explore</span><span>Place value</span><span class="slide-time" data-slide-time="7">3 min</span></div><h2 id="title-7" tabindex="-1">Every place has a value.</h2><p class="lede">A place-value chart is a map, not a memory test.</p></header><div class="slide-content"><div class="explorer-top"><label>Examples <select id="explorerSelect"><option value="46205">46,205</option><option value="304060">304,060</option><option value="1000000">1,000,000</option></select></label><form id="explorerCustomForm" class="explorer-custom" novalidate><label for="explorerNumber">Try your own</label><input id="explorerNumber" type="text" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="e.g. 58,324" aria-label="Your whole number, from zero to one million"><button class="small-btn" type="submit">Build it</button></form></div><div id="explorerBoard" class="pv-explorer"></div><div class="explorer-readout" id="explorerReadout" aria-live="polite"></div><p class="small-help">Click a column. Each place to the left is worth 10 times as much. A dash means the place is not used.</p><div class="callout "><strong>Read the places from the right:</strong> ones → tens → hundreds → thousands → ten thousands → hundred thousands → millions.</div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Whole numbers · Up to one million</span><span>07 / 31</span></footer></section>
+<section id="slide-7" class="slide kind-explore " aria-labelledby="title-7" data-n="7" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Explore</span><span>Place value</span><span class="slide-time" data-slide-time="7">3 min</span></div><h2 id="title-7" tabindex="-1">Every place has a value.</h2><p class="lede">A place-value chart is a map, not a memory test.</p></header><div class="slide-content"><div class="explorer-top"><label>Examples <select id="explorerSelect"><option value="46205">46,205</option><option value="304060">304,060</option><option value="1000000">1,000,000</option></select></label><form id="explorerCustomForm" class="explorer-custom" novalidate><label for="explorerNumber">Try your own</label><input id="explorerNumber" type="text" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="e.g. 58,324" aria-label="Your whole number, from zero to one million"><button type="button" class="small-btn keypad-launch" data-keypad="explorerNumber" aria-label="Open the number pad to build a number">Number pad</button><button class="small-btn" type="submit">Build it</button></form></div><div id="explorerBoard" class="pv-explorer"></div><div class="explorer-readout" id="explorerReadout" aria-live="polite"></div><p class="small-help">Tap or click a column. Each place to the left is worth 10 times as much. A dash means the place is not used.</p><div class="callout "><strong>Read the places from the right:</strong> ones → tens → hundreds → thousands → ten thousands → hundred thousands → millions.</div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Whole numbers · Up to one million</span><span>07 / 31</span></footer></section>
 <section id="slide-8" class="slide kind-worked-example " aria-labelledby="title-8" data-n="8" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Worked example</span><span>Place value</span><span class="slide-time" data-slide-time="8">3 min</span></div><h2 id="title-8" tabindex="-1">We do: split the number.</h2><p class="lede">Read one column at a time. Give each digit its full value.</p></header><div class="slide-content"><div class="pv-static" style="--cols:5"><div class="pv-item "><span class="pv-label">Ten<br>thousands</span><span class="pv-number">5</span></div><div class="pv-item "><span class="pv-label">Thousands</span><span class="pv-number">8</span></div><div class="pv-item "><span class="pv-label">Hundreds</span><span class="pv-number">3</span></div><div class="pv-item "><span class="pv-label">Tens</span><span class="pv-number">2</span></div><div class="pv-item "><span class="pv-label">Ones</span><span class="pv-number">4</span></div></div><div class="model-heading"><span class="card-label">PARTITION = SPLIT INTO PLACE VALUES</span><strong>58,324</strong></div><div class="reveal-box"><div class="reveal-step concealed" data-step="1"><div class="partition-sum">50,000 <span>+</span> 8,000 <span>+</span> 300 <span>+</span> 20 <span>+</span> 4</div></div><div class="reveal-step concealed" data-step="2"><p class="equation">Put the parts back together: <strong>58,324</strong>.</p></div></div><div class="demo-controls"><button type="button" class="primary" id="partitionNext">Show the place values</button><button type="button" class="small-btn" id="partitionReset">Reset example</button></div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Whole numbers · Up to one million</span><span>08 / 31</span></footer></section>
 <section id="slide-9" class="slide kind-your-turn " aria-labelledby="title-9" data-n="9" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Your turn</span><span>Place value</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="9" aria-pressed="true" class="is-active">Questions</button><button type="button" data-pair-slide="10" aria-pressed="false">Answers</button></div><span class="slide-time" data-slide-time="9">3 min</span></div><h2 id="title-9" tabindex="-1">Your turn: name the value.</h2><p class="lede">Use the place-value chart or sketch your own.</p></header><div class="slide-content"><div class="grid cols-2 digit-questions"><article class="card question-card"><span class="card-label">A</span><div class="card-main">4,<u>7</u>82</div><p class=card-sub>What is the value of the digit 7?</p></article><article class="card question-card"><span class="card-label">B</span><div class="card-main">5<u>6</u>,419</div><p class=card-sub>What is the value of the digit 6?</p></article><article class="card question-card"><span class="card-label">C</span><div class="card-main"><u>3</u>05,208</div><p class=card-sub>What is the value of the digit 3?</p></article><article class="card question-card"><span class="card-label">D</span><div class="card-main">82,6<u>4</u>3</div><p class=card-sub>What is the value of the digit 4?</p></article></div><div class="callout "><strong>Extra:</strong> In 82,643, which digit is in the ten-thousands place?</div><div class="task-shelf"><span>Write the full value, not just the digit.</span><button class="small-btn timer-for-slide" type="button">Start activity timer</button></div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Answers on the next slide</span><span>09 / 31</span></footer></section>
 <section id="slide-10" class="slide kind-answers " aria-labelledby="title-10" data-n="10" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Answers</span><span>Place value</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="9" aria-pressed="false">Questions</button><button type="button" data-pair-slide="10" aria-pressed="true" class="is-active">Answers</button></div><span class="slide-time" data-slide-time="10">2 min</span></div><h2 id="title-10" tabindex="-1">Same digit. Different value.</h2><p class="lede">Name the place first. Then work out the value.</p></header><div class="slide-content"><div class="grid cols-2 "><article class="card answer-card"><span class="card-label">A · DIGIT 7</span><div class="card-main">700</div><p class=card-sub>7 hundreds = 7 × 100.</p></article><article class="card answer-card"><span class="card-label">B · DIGIT 6</span><div class="card-main">6,000</div><p class=card-sub>6 thousands = 6 × 1,000.</p></article><article class="card answer-card"><span class="card-label">C · DIGIT 3</span><div class="card-main">300,000</div><p class=card-sub>3 hundred-thousands = 3 × 100,000.</p></article><article class="card answer-card"><span class="card-label">D · DIGIT 4</span><div class="card-main">40</div><p class=card-sub>4 tens = 4 × 10.</p></article></div><div class="callout "><strong>Extra answer:</strong> the digit is <strong>8</strong>. In 82,643, its value is 80,000.</div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Correct it. Explain it. Keep going.</span><span>10 / 31</span></footer></section>
@@ -155,19 +304,20 @@ body[data-theme="dark"]{--ink:#eef5ed;--muted:#c2d1cc;--paper:#102528;--card:#1b
 <section id="slide-22" class="slide kind-answers " aria-labelledby="title-22" data-n="22" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Answers</span><span>Compare &amp; decide</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="21" aria-pressed="false">Questions</button><button type="button" data-pair-slide="22" aria-pressed="true" class="is-active">Answers</button></div><span class="slide-time" data-slide-time="22">2 min</span></div><h2 id="title-22" tabindex="-1">Order is about place, not looks.</h2><p class="lede">The first different place decides which whole number is larger.</p></header><div class="slide-content"><article class="card answer-card order-answer"><span class="card-label">A · INCREASING ORDER</span><div class="order-chain">28,054 <b>&lt;</b> 28,405 <b>&lt;</b> 28,450 <b>&lt;</b> 28,540</div><p class="card-sub">Compare hundreds first, then tens when the hundreds match.</p></article><div class="grid cols-3 symbol-answers"><article class="card answer-card"><span class="card-label">B</span><div class="card-main">99,999 &lt; 100,000</div><p class=card-sub>Five digits versus six digits.</p></article><article class="card answer-card"><span class="card-label">C</span><div class="card-main">304,600 &gt; 304,060</div><p class=card-sub>6 hundreds is more than 0 hundreds.</p></article><article class="card answer-card"><span class="card-label">D</span><div class="card-main">42000 = 42,000</div><p class=card-sub>A grouping comma does not change the number.</p></article></div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Correct it. Explain it. Keep going.</span><span>22 / 31</span></footer></section>
 <section id="slide-23" class="slide kind-your-turn " aria-labelledby="title-23" data-n="23" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Your turn</span><span>Compare &amp; decide</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="23" aria-pressed="true" class="is-active">Questions</button><button type="button" data-pair-slide="24" aria-pressed="false">Answers</button></div><span class="slide-time" data-slide-time="23">3 min</span></div><h2 id="title-23" tabindex="-1">Put your decision to work.</h2><p class="lede">All three quotes are for the same equipment. These are classroom examples.</p></header><div class="slide-content"><div class="budget-banner"><span>WORKSHOP EQUIPMENT BUDGET</span><strong>£24,500</strong><p>The college cannot spend more than this.</p></div><div class="grid cols-3 quote-grid"><article class="card "><span class="card-label">QUOTE A</span><div class="card-main">£24,050</div></article><article class="card "><span class="card-label">QUOTE B</span><div class="card-main">£24,550</div></article><article class="card "><span class="card-label">QUOTE C</span><div class="card-main">£24,500</div></article></div><div class="decision-prompts"><p><b>1.</b> Which quotes are within the budget?</p><p><b>2.</b> Which affordable quote is cheapest?</p><p><b>3.</b> Does quote C leave any money? Explain.</p></div><div class="task-shelf"><span>Use the actual numbers to justify your decision.</span><button class="small-btn timer-for-slide" type="button">Start activity timer</button></div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Answers on the next slide</span><span>23 / 31</span></footer></section>
 <section id="slide-24" class="slide kind-answers " aria-labelledby="title-24" data-n="24" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Answers</span><span>Compare &amp; decide</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="23" aria-pressed="false">Questions</button><button type="button" data-pair-slide="24" aria-pressed="true" class="is-active">Answers</button></div><span class="slide-time" data-slide-time="24">1 min</span></div><h2 id="title-24" tabindex="-1">A sensible number, a sensible choice.</h2><p class="lede">A complete answer says what you choose and why it works.</p></header><div class="slide-content"><div class="grid cols-3 "><article class="card answer-card"><span class="card-label">1 · WITHIN BUDGET</span><div class="card-main">A and C</div><p class=card-sub>£24,050 < £24,500.<br>£24,500 = £24,500.<br>B costs more than the budget.</p></article><article class="card answer-card"><span class="card-label">2 · CHEAPEST SUITABLE QUOTE</span><div class="card-main">Quote A</div><p class=card-sub>£24,050 is less than £24,500.</p></article><article class="card answer-card"><span class="card-label">3 · MONEY LEFT WITH C</span><div class="card-main">No — £0 remains.</div><p class=card-sub>Quote C uses the whole £24,500 budget.</p></article></div><div class="callout "><strong>Explain a decision:</strong> “I choose A because £24,050 is within the budget and is the lowest quote.”</div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Correct it. Explain it. Keep going.</span><span>24 / 31</span></footer></section>
-<section id="slide-25" class="slide kind-your-turn " aria-labelledby="title-25" data-n="25" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Your turn</span><span>Build &amp; check</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="25" aria-pressed="true" class="is-active">Questions</button><button type="button" data-pair-slide="26" aria-pressed="false">Answers</button></div><span class="slide-time" data-slide-time="25">4 min</span></div><h2 id="title-25" tabindex="-1">Build a number. Defend it.</h2><p class="lede">Move the classroom cards, or use the digits on your own paper.</p></header><div class="slide-content"><div class="builder-top"><p>Use <strong>0, 2, 4, 6 and 8</strong> exactly once in each five-digit number.</p><span class="mini-tag">Pairs · try, swap, explain</span></div><div id="digitBuilder" class="digit-builder" role="group" aria-label="Five digit cards. Select two cards to swap them, or drag one card onto another."></div><div class="builder-tools"><p id="builderReadout" aria-live="polite">Tap two cards to swap, or drag one onto another.</p><button type="button" class="small-btn" id="builderReset">Reset cards</button></div><div class="grid cols-3 builder-questions"><article class="card question-card"><span class="card-label">A</span><div class="card-main">Make the largest number.</div></article><article class="card question-card"><span class="card-label">B</span><div class="card-main">Make the smallest five-digit number.</div></article><article class="card question-card"><span class="card-label">C · CHALLENGE</span><div class="card-main">Make the smallest number greater than 60,000.</div></article></div><div class="task-shelf"><span>Write all three answers. A five-digit number cannot start with 0.</span><button class="small-btn timer-for-slide" type="button">Start activity timer</button></div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Answers on the next slide</span><span>25 / 31</span></footer></section>
+<section id="slide-25" class="slide kind-your-turn " aria-labelledby="title-25" data-n="25" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Your turn</span><span>Build &amp; check</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="25" aria-pressed="true" class="is-active">Questions</button><button type="button" data-pair-slide="26" aria-pressed="false">Answers</button></div><span class="slide-time" data-slide-time="25">4 min</span></div><h2 id="title-25" tabindex="-1">Build a number. Defend it.</h2><p class="lede">Move the classroom cards, or use the digits on your own paper.</p></header><div class="slide-content"><div class="builder-top"><p>Use <strong>0, 2, 4, 6 and 8</strong> exactly once in each five-digit number.</p><span class="mini-tag">Pairs · try, swap, explain</span></div><div id="digitBuilder" class="digit-builder" role="group" aria-label="Five digit cards. Select two cards to swap them, or drag one card onto another."></div><div class="builder-tools"><p id="builderReadout" aria-live="polite">Tap two cards to swap, or drag with your finger, pen or mouse.</p><button type="button" class="small-btn" id="builderReset">Reset cards</button></div><div class="grid cols-3 builder-questions"><article class="card question-card"><span class="card-label">A</span><div class="card-main">Make the largest number.</div></article><article class="card question-card"><span class="card-label">B</span><div class="card-main">Make the smallest five-digit number.</div></article><article class="card question-card"><span class="card-label">C · CHALLENGE</span><div class="card-main">Make the smallest number greater than 60,000.</div></article></div><div class="task-shelf"><span>Write all three answers. A five-digit number cannot start with 0.</span><button class="small-btn timer-for-slide" type="button">Start activity timer</button></div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Answers on the next slide</span><span>25 / 31</span></footer></section>
 <section id="slide-26" class="slide kind-answers " aria-labelledby="title-26" data-n="26" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Answers</span><span>Build &amp; check</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="25" aria-pressed="false">Questions</button><button type="button" data-pair-slide="26" aria-pressed="true" class="is-active">Answers</button></div><span class="slide-time" data-slide-time="26">2 min</span></div><h2 id="title-26" tabindex="-1">The order of the digits matters.</h2><p class="lede">Do not just show a number. Explain why no better choice is possible.</p></header><div class="slide-content"><div class="grid cols-3 "><article class="card answer-card"><span class="card-label">A · LARGEST</span><div class="card-main">86,420</div><p class=card-sub>Arrange the digits from largest to smallest.</p></article><article class="card answer-card"><span class="card-label">B · SMALLEST FIVE-DIGIT</span><div class="card-main">20,468</div><p class=card-sub>Start with 2, the smallest non-zero digit. Then put 0, 4, 6, 8 in order.</p></article><article class="card answer-card"><span class="card-label">C · SMALLEST ABOVE 60,000</span><div class="card-main">60,248</div><p class=card-sub>Start with 6, then arrange the remaining digits 0, 2, 4, 8 from smallest to largest.</p></article></div><div class="callout "><strong>Why not 02,468 for B?</strong> Its value is 2,468, so it is not a five-digit number in standard form.</div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Correct it. Explain it. Keep going.</span><span>26 / 31</span></footer></section>
 <section id="slide-27" class="slide kind-your-turn " aria-labelledby="title-27" data-n="27" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Your turn</span><span>Build &amp; check</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="27" aria-pressed="true" class="is-active">Questions</button><button type="button" data-pair-slide="28" aria-pressed="false">Answers</button></div><span class="slide-time" data-slide-time="27">1 min</span></div><h2 id="title-27" tabindex="-1">One-minute check.</h2><p class="lede">A final confidence check before the team mission.</p></header><div class="slide-content"><div class="grid cols-3 "><article class="card question-card"><span class="card-label">A · VALUE</span><div class="card-main">In 306,020, what is the value of the digit 6?</div></article><article class="card question-card"><span class="card-label">B · WRITE</span><div class="card-main">Write eighty thousand and nine as digits.</div></article><article class="card question-card"><span class="card-label">C · COMPARE</span><div class="card-main">45,090 <span class="symbol-blank">?</span> 45,900</div><p class=card-sub>Choose <, > or =.</p></article></div><div class="callout "><strong>On your own:</strong> this shows which method is now sticking.</div><div class="task-shelf"><span>Three quick answers. Your own thinking first.</span><button class="small-btn timer-for-slide" type="button">Start activity timer</button></div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Answers on the next slide</span><span>27 / 31</span></footer></section>
 <section id="slide-28" class="slide kind-answers " aria-labelledby="title-28" data-n="28" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Answers</span><span>Build &amp; check</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="27" aria-pressed="false">Questions</button><button type="button" data-pair-slide="28" aria-pressed="true" class="is-active">Answers</button></div><span class="slide-time" data-slide-time="28">1 min</span></div><h2 id="title-28" tabindex="-1">Ready for the final mission.</h2><p class="lede">Use what you have just corrected in the next activity.</p></header><div class="slide-content"><div class="grid cols-3 "><article class="card answer-card"><span class="card-label">A</span><div class="card-main">6,000</div><p class=card-sub>The 6 is in the thousands place.</p></article><article class="card answer-card"><span class="card-label">B</span><div class="card-main">80,009</div><p class=card-sub>80,000 + 9. Keep the empty places.</p></article><article class="card answer-card"><span class="card-label">C</span><div class="card-main">45,090 < 45,900</div><p class=card-sub>0 hundreds is less than 9 hundreds.</p></article></div><div class="callout "><strong>Quick self-check:</strong> 1 = I need another model · 2 = I can use the chart · 3 = I can explain it.</div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Correct it. Explain it. Keep going.</span><span>28 / 31</span></footer></section>
 <section id="slide-29" class="slide kind-team-mission " aria-labelledby="title-29" data-n="29" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Team mission</span><span>Final mission</span><span class="slide-time" data-slide-time="29">1 min</span></div><h2 id="title-29" tabindex="-1">Final mission: open the event kit.</h2><p class="lede">The college event kit is locked. Your number skills can open it.</p></header><div class="slide-content"><div class="mission-intro"><div class="mission-art"><svg viewBox="0 0 440 360" role="img" aria-label="A locked equipment case for a college event"><path d="M152 89V61c0-43 136-43 136 0v28" fill="none" stroke="var(--ink)" stroke-width="13"/><rect x="31" y="82" width="378" height="245" rx="25" fill="var(--soft-teal)" stroke="var(--ink)" stroke-width="5"/><path d="M31 155H409" stroke="var(--ink)" stroke-width="5"/><rect x="69" y="137" width="42" height="38" rx="7" fill="var(--paper)" stroke="var(--ink)" stroke-width="4"/><rect x="330" y="137" width="42" height="38" rx="7" fill="var(--paper)" stroke="var(--ink)" stroke-width="4"/><rect x="168" y="192" width="108" height="80" rx="16" fill="var(--lime)" stroke="var(--ink)" stroke-width="4"/><path d="M188 193v-25c0-40 68-40 68 0v25" fill="none" stroke="var(--ink)" stroke-width="9"/><circle cx="222" cy="226" r="9" fill="var(--ink)"/><path d="M222 229v17" stroke="var(--ink)" stroke-width="7"/><rect x="50" y="289" width="86" height="24" rx="3" fill="var(--paper)"/><path d="M60 295v12m6-12v12m6-12v12m11-12v12m4-12v12m8-12v12m4-12v12m8-12v12m10-12v12" stroke="var(--ink)" stroke-width="3"/></svg></div><div class="mission-rules"><div><b>01</b><p>Work in pairs or threes. Solve all six tasks on the next slide.</p></div><div><b>02</b><p>Everyone records the <strong>full answers</strong>. Take turns being reader and checker.</p></div><div><b>03</b><p>Collect one code digit from each task. Put them in order <strong>A → F</strong>.</p></div><div><b>04</b><p>Try the six-digit code. Be ready to explain before the answers appear.</p></div></div></div><div class="callout "><strong>Mission rule:</strong> a correct code is not enough. Your team needs six clear written answers.</div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Whole numbers · Up to one million</span><span>29 / 31</span></footer></section>
-<section id="slide-30" class="slide kind-your-turn mission-task-slide" aria-labelledby="title-30" data-n="30" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Your turn</span><span>Final mission</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="30" aria-pressed="true" class="is-active">Questions</button><button type="button" data-pair-slide="31" aria-pressed="false">Answers</button></div><span class="slide-time" data-slide-time="30">8 min</span></div><h2 id="title-30" tabindex="-1">Six tasks. One team. One code.</h2><p class="lede">Write every full answer before collecting its code digit. Use the chart when needed.</p></header><div class="slide-content"><div class="grid cols-3 mission-grid"><article class="card question-card"><span class="card-label">A · WORDS</span><div class="card-main">Write <strong>63,208</strong> in words.</div><p class=card-sub>Code digit: the thousands digit in 63,208.</p></article><article class="card question-card"><span class="card-label">B · DIGITS</span><div class="card-main">Write <strong>four hundred and five thousand and six</strong> in digits.</div><p class=card-sub>Code digit: the hundred-thousands digit.</p></article><article class="card question-card"><span class="card-label">C · VALUE</span><div class="card-main">What is the value of the digit <strong>8</strong> in <strong>18,240</strong>?</div><p class=card-sub>Code digit: the first non-zero digit of your answer.</p></article><article class="card question-card"><span class="card-label">D · PLACE</span><div class="card-main">Which digit is in the <strong>tens</strong> place in <strong>70,052</strong>?</div><p class=card-sub>Use that digit as your code digit.</p></article><article class="card question-card"><span class="card-label">E · COMPARE</span><div class="card-main">Write the smallest:<br><strong>40,608 · 40,680 · 40,086</strong>.</div><p class=card-sub>Code digit: the ones digit of your answer.</p></article><article class="card question-card"><span class="card-label">F · BUILD</span><div class="card-main">Write <strong>200,000 + 7,000 + 30 + 9</strong> as one number.</div><p class=card-sub>Code digit: the ones digit of your answer.</p></article></div><form id="codeForm" class="code-form" novalidate><label for="missionCode">Code A → F</label><input id="missionCode" name="missionCode" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="_ _ _ _ _ _" aria-describedby="codeStatus"><button type="submit" class="primary">Try the code</button><button type="button" class="small-btn timer-for-slide">Start activity timer</button><p id="codeStatus" role="status">Full written answers first. Then try your six-digit code.</p></form></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Answers on the next slide</span><span>30 / 31</span></footer></section>
+<section id="slide-30" class="slide kind-your-turn mission-task-slide" aria-labelledby="title-30" data-n="30" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Your turn</span><span>Final mission</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="30" aria-pressed="true" class="is-active">Questions</button><button type="button" data-pair-slide="31" aria-pressed="false">Answers</button></div><span class="slide-time" data-slide-time="30">8 min</span></div><h2 id="title-30" tabindex="-1">Six tasks. One team. One code.</h2><p class="lede">Write every full answer before collecting its code digit. Use the chart when needed.</p></header><div class="slide-content"><div class="grid cols-3 mission-grid"><article class="card question-card"><span class="card-label">A · WORDS</span><div class="card-main">Write <strong>63,208</strong> in words.</div><p class=card-sub>Code digit: the thousands digit in 63,208.</p></article><article class="card question-card"><span class="card-label">B · DIGITS</span><div class="card-main">Write <strong>four hundred and five thousand and six</strong> in digits.</div><p class=card-sub>Code digit: the hundred-thousands digit.</p></article><article class="card question-card"><span class="card-label">C · VALUE</span><div class="card-main">What is the value of the digit <strong>8</strong> in <strong>18,240</strong>?</div><p class=card-sub>Code digit: the first non-zero digit of your answer.</p></article><article class="card question-card"><span class="card-label">D · PLACE</span><div class="card-main">Which digit is in the <strong>tens</strong> place in <strong>70,052</strong>?</div><p class=card-sub>Use that digit as your code digit.</p></article><article class="card question-card"><span class="card-label">E · COMPARE</span><div class="card-main">Write the smallest:<br><strong>40,608 · 40,680 · 40,086</strong>.</div><p class=card-sub>Code digit: the ones digit of your answer.</p></article><article class="card question-card"><span class="card-label">F · BUILD</span><div class="card-main">Write <strong>200,000 + 7,000 + 30 + 9</strong> as one number.</div><p class=card-sub>Code digit: the ones digit of your answer.</p></article></div><form id="codeForm" class="code-form" novalidate><label for="missionCode">Code A → F</label><input id="missionCode" name="missionCode" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="_ _ _ _ _ _" aria-describedby="codeStatus"><button type="button" class="small-btn keypad-launch" data-keypad="missionCode" aria-label="Open the number pad for the mission code">Number pad</button><button type="submit" class="primary">Try the code</button><button type="button" class="small-btn timer-for-slide">Start activity timer</button><p id="codeStatus" role="status">Full written answers first. Then try your six-digit code.</p></form></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Answers on the next slide</span><span>30 / 31</span></footer></section>
 <section id="slide-31" class="slide kind-answers mission-answer-slide" aria-labelledby="title-31" data-n="31" hidden><header class="slide-heading"><div class="eyebrow"><span class="kind-badge">Answers</span><span>Final mission</span><div class="pair-switch" role="group" aria-label="Questions and answers for this activity"><button type="button" data-pair-slide="30" aria-pressed="false">Questions</button><button type="button" data-pair-slide="31" aria-pressed="true" class="is-active">Answers</button></div><span class="slide-time" data-slide-time="31">3 min</span></div><h2 id="title-31" tabindex="-1">Unlocked. Now explain how.</h2><p class="lede">Check the maths, not just the code. Make one useful correction.</p></header><div class="slide-content"><div class="grid cols-3 mission-grid mission-answer-grid"><article class="card answer-card"><span class="card-label">A · CODE DIGIT 3</span><div class="card-main">Sixty-three thousand two hundred and eight.</div><p class=card-sub>The thousands digit in 63,208 is 3.</p></article><article class="card answer-card"><span class="card-label">B · CODE DIGIT 4</span><div class="card-main">405,006</div><p class=card-sub>The hundred-thousands digit is 4.</p></article><article class="card answer-card"><span class="card-label">C · CODE DIGIT 8</span><div class="card-main">8,000</div><p class=card-sub>8 thousands. The first non-zero digit is 8.</p></article><article class="card answer-card"><span class="card-label">D · CODE DIGIT 5</span><div class="card-main">5</div><p class=card-sub>70,052 has 5 tens, worth 50.</p></article><article class="card answer-card"><span class="card-label">E · CODE DIGIT 6</span><div class="card-main">40,086</div><p class=card-sub>It has 0 hundreds. The ones digit is 6.</p></article><article class="card answer-card"><span class="card-label">F · CODE DIGIT 9</span><div class="card-main">207,039</div><p class=card-sub>200,000 + 7,000 + 30 + 9. Ones digit: 9.</p></article></div><div class="unlock-strip"><span class="unlock-label">THE CODE</span><div class="code-digits" aria-label="3 4 8 5 6 9"><span>3</span><span>4</span><span>8</span><span>5</span><span>6</span><span>9</span></div><p><strong>Your exit reflection:</strong><br>One thing I can do now.<br>One thing I will practise next.</p></div></div><footer class="slide-foot"><span>NUMBER SENSE / LEVEL 1</span><span>Correct it. Explain it. Keep going.</span><span>31 / 31</span></footer></section></div></div></main>
 <footer class="bottom-bar">
 <div class="nav-buttons"><button type="button" class="nav-btn" id="prevButton" disabled title="Previous slide (← / ↑)" aria-keyshortcuts="ArrowLeft ArrowUp PageUp">← Previous</button><button type="button" class="slide-index" id="slideIndex" data-open="slides" aria-label="Open slide list, slide 1 of 31" title="Choose any slide (G)">01 / 31</button><button type="button" class="nav-btn next" id="nextButton" title="Next slide (→ / ↓)" aria-keyshortcuts="ArrowRight ArrowDown PageDown">Next slide →</button></div>
 <div class="phase-progress"><div class="nav-context"><span class="phase-name" id="phaseName">Welcome</span><button type="button" class="keyboard-hint" data-open="keys" title="See all keyboard shortcuts"><kbd>←</kbd><kbd>→</kbd><span>Move between slides</span></button></div><div class="progress-track" role="progressbar" aria-label="Progress through slides" aria-valuemin="1" aria-valuemax="31" aria-valuenow="1"><div class="progress-fill" id="progressFill"></div></div><span class="up-next" id="nextCue">Next: Today’s three goals.</span></div>
-<button type="button" class="tool-btn focus-exit" id="focusExitButton" hidden title="Leave focus view (P)">Exit focus · P</button>
+<button type="button" class="tool-btn focus-exit" id="focusExitButton" hidden title="Leave focus view (P)">Exit focus</button>
+<button type="button" class="tool-btn board-tools" id="boardToolsButton" data-open="board" aria-label="Open touchscreen and ViewBoard tools">Board tools</button>
 <div class="timer-widget" id="timerWidget"><button type="button" class="timer-label-btn" data-open="timer" aria-label="Open classroom timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 13V8M9 2h6M12 2v3"/></svg><span id="timerSmall">03:00</span></button><button type="button" class="timer-play" id="timerQuick">Start</button></div></footer>
-<div class="modal-layer" id="modalLayer" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" id="modalDialog"><header class="modal-head"><div><h2 id="modalTitle">Lesson plan</h2><p id="modalSubtitle"></p></div><button class="modal-close" type="button" id="modalClose" aria-label="Close dialog">×</button></header><div class="modal-body" id="modalBody"></div></section></div>
+<div class="modal-layer" id="modalLayer" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" id="modalDialog"><header class="modal-head"><div><h2 id="modalTitle">Lesson plan</h2><p id="modalSubtitle"></p></div><button class="modal-close" type="button" id="modalClose" aria-label="Close dialog">Close ×</button></header><div class="modal-body" id="modalBody"></div></section></div>
 <div class="blackout" id="blackout" hidden><button type="button" id="restoreScreen">Return to slides · B or Escape</button></div>
 <div class="toast" id="toast" role="status" hidden></div><div id="slideAnnouncement" class="sr-only" aria-live="polite"></div><div id="timerAnnouncement" class="sr-only" role="status"></div>
 <div id="worksheetPrint" class="print-only"><section class="print-page"><div class="print-top">FUNCTIONAL SKILLS MATHS · LEVEL 1 <span>1 / 5</span></div><h1>Start &amp; place value</h1><p>Name: __________________________ &nbsp; Date: __________________</p><div class="print-chart">Millions | Hundred thousands | Ten thousands | Thousands | Hundreds | Tens | Ones</div><h2>Starting check</h2><div class="print-question"><p><b>A.</b> Write four hundred and six as digits.</p><div class="writing-line"></div></div><div class="print-question"><p><b>B.</b> In 572, what is the value of the digit 7?</p><div class="writing-line"></div></div><div class="print-question"><p><b>C.</b> Which is larger: 1,205 or 1,250?</p><div class="writing-line"></div></div><div class="print-question"><p><b>D.</b> You earn £20 for each of 3 shifts. How much do you earn altogether?</p><div class="writing-line"></div></div><h2>Name the value</h2><div class="print-question"><p><b>A.</b> In 4,782, what is the value of the digit 7?</p><div class="writing-line"></div></div><div class="print-question"><p><b>B.</b> In 56,419, what is the value of the digit 6?</p><div class="writing-line"></div></div><div class="print-question"><p><b>C.</b> In 305,208, what is the value of the digit 3?</p><div class="writing-line"></div></div><div class="print-question"><p><b>D.</b> In 82,643, what is the value of the digit 4?</p><div class="writing-line"></div></div><div class="print-question"><p><b>Extra.</b> In 82,643, which digit is in the ten-thousands place?</p><div class="writing-line"></div></div></section>
@@ -191,6 +341,12 @@ const storage={get(key,fallback){if(Object.prototype.hasOwnProperty.call(memoryS
 let current=0;
 let focusView=false;
 let draggedCard=null;
+let boardMode=storage.get('boardMode','on')!=='off';
+let swipeEnabled=storage.get('boardSwipes','off')==='on';
+let touchTestCount=0;
+let padState=null;
+let touchCardDrag=null;
+let blockedDragClick=null;
 let pace=Number(storage.get('pace','85'));
 if(![80,85,90].includes(pace))pace=85;
 let modalName=null;
@@ -208,11 +364,29 @@ function durationOf(s){let d=s.mins;if(pace===80&&[3,12,15,21,25].includes(s.n))
 function schedule(){let start=0;return LESSON.map(s=>{const d=durationOf(s);const r={...s,duration:d,start,end:start+d};start+=d;return r;});}
 function phases(){const result=[];for(const s of schedule()){let p=result[result.length-1];if(!p||p.name!==s.phase){p={name:s.phase,start:s.start,end:s.end,first:s.n,last:s.n};result.push(p);}else{p.end=s.end;p.last=s.n;}}return result;}
 function updatePace(){storage.set('pace',pace);updateChapterRail();$('#durationBadge').textContent=pace+' min';$$('[data-slide-time]').forEach(el=>{const s=LESSON[Number(el.dataset.slideTime)-1];el.textContent=durationOf(s)+' min';});$$('.timer-for-slide').forEach(btn=>{const s=LESSON[Number(btn.closest('.slide').dataset.n)-1];btn.textContent='Start '+durationOf(s)+'-min timer';});}
-function scaleDeck(){if(innerWidth<=900){$('#deck-frame').style.width='100%';$('#deck-frame').style.height='auto';$('#stage').style.transform='none';return;}const v=$('#viewport');const style=getComputedStyle(v);const aw=v.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);const ah=v.clientHeight-parseFloat(style.paddingTop)-parseFloat(style.paddingBottom);const scale=Math.max(.2,Math.min(aw/1440,ah/810));$('#deck-frame').style.width=(1440*scale)+'px';$('#deck-frame').style.height=(810*scale)+'px';$('#stage').style.transform='scale('+scale+')';}
+function scaleDeck(){
+  const frame=$('#deck-frame'),stage=$('#stage'),v=$('#viewport');
+  if(innerWidth<=900){
+    v.style.removeProperty('height');frame.style.width='100%';frame.style.height='auto';stage.style.transform='none';
+    document.documentElement.style.setProperty('--board-target','48px');return;
+  }
+  // Use measured chrome heights: touchscreen controls may wrap, browser zoom may change,
+  // and an embedded ViewBoard browser may not support dynamic viewport units.
+  const chrome=['.topbar','#chapterRail','.bottom-bar'].reduce((sum,selector)=>sum+$(selector).getBoundingClientRect().height,0);
+  v.style.height=Math.max(200,innerHeight-chrome)+'px';
+  const style=getComputedStyle(v);
+  const aw=v.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
+  const ah=v.clientHeight-parseFloat(style.paddingTop)-parseFloat(style.paddingBottom);
+  const scale=Math.max(.2,Math.min(aw/1440,ah/810));
+  frame.style.width=(1440*scale)+'px';frame.style.height=(810*scale)+'px';stage.style.transform='scale('+scale+')';
+  // A scaled slide must not shrink its tap targets below 48 CSS pixels.
+  document.documentElement.style.setProperty('--board-target',Math.ceil(48/scale)+'px');
+}
 function announceSlide(){const s=LESSON[current];$('#slideAnnouncement').textContent='Slide '+s.n+' of '+LESSON.length+'. '+s.kind+'. '+s.title;}
 function navigate(n,{focus=true,hash=true}={}){
   if(!Number.isFinite(Number(n)))return;
   n=Math.max(0,Math.min(LESSON.length-1,Math.trunc(Number(n))));
+  cancelTouchCardDrag();
   const previous=current;
   slideEls[current].hidden=true;
   slideEls[current].classList.remove('slide-enter','slide-back');
@@ -253,13 +427,43 @@ function navigate(n,{focus=true,hash=true}={}){
 function fromHash(){const m=location.hash.match(/^#slide-(\d+)$/);return m?Math.max(0,Math.min(LESSON.length-1,Number(m[1])-1)):0;}
 window.addEventListener('hashchange',()=>navigate(fromHash(),{focus:false,hash:false}));
 $('#prevButton').addEventListener('click',()=>navigate(current-1));$('#nextButton').addEventListener('click',()=>navigate(current+1));
-window.addEventListener('resize',scaleDeck);document.addEventListener('fullscreenchange',()=>{const on=Boolean(document.fullscreenElement);$('#fullscreenButton').textContent=on?'⛶ Exit full screen':'⛶ Full screen';$('#fullscreenButton').setAttribute('aria-label',on?'Exit full screen':'Enter full screen');scaleDeck();});
-async function toggleFullscreen(){try{if(document.fullscreenElement){await document.exitFullscreen();}else if(document.documentElement.requestFullscreen){await document.documentElement.requestFullscreen();}else{showToast('Full screen is not available here. Use your browser’s full-screen control.');}}catch(e){showToast('The browser blocked full screen. Try its full-screen control instead.');}}
+window.addEventListener('resize',scaleDeck);
+function fullscreenElement(){return document.fullscreenElement||document.webkitFullscreenElement||null;}
+function updateFullscreen(){
+  const on=Boolean(fullscreenElement());
+  $('#fullscreenButton').textContent=on?'⛶ Exit full screen':'⛶ Full screen';
+  $('#fullscreenButton').setAttribute('aria-label',on?'Exit full screen':'Enter full screen');
+  if($('#boardFullscreen'))$('#boardFullscreen').textContent=on?'Exit full screen':'Full screen';
+  scaleDeck();
+}
+document.addEventListener('fullscreenchange',updateFullscreen);
+document.addEventListener('webkitfullscreenchange',updateFullscreen);
+async function toggleFullscreen(){
+  try{
+    if(fullscreenElement()){
+      const exit=document.exitFullscreen||document.webkitExitFullscreen;
+      if(exit)await exit.call(document);
+    }else{
+      const root=document.documentElement,enter=root.requestFullscreen||root.webkitRequestFullscreen;
+      if(enter)await enter.call(root);
+      else{toggleFocusView(true);showToast('Full screen is unavailable in this browser. Focus view is on; use the browser’s full-screen option for more space.');}
+    }
+  }catch(e){toggleFocusView(true);showToast('This browser blocked full screen. Focus view is on. You can still use every lesson activity.');}
+  updateFullscreen();
+}
 $('#fullscreenButton').addEventListener('click',toggleFullscreen);
 function showToast(message){clearTimeout(toastTimeout);$('#toast').textContent=message;$('#toast').hidden=false;toastTimeout=setTimeout(()=>{$('#toast').hidden=true;},4200);}
 function setBackgroundInert(on){for(const s of ['.topbar','#chapterRail','#viewport','.bottom-bar'])$(s).inert=on;}
-function openModal(name){if(!modalName)lastFocus=document.activeElement;modalName=name;$('#modalLayer').hidden=false;setBackgroundInert(true);$('#modalDialog').classList.toggle('compact',['display','timer'].includes(name));const titles={plan:'Your complete lesson plan',slides:'Jump to a slide',notes:'Teacher notes',display:'Display & classroom controls',timer:'Classroom timer',keys:'Keyboard & presentation controls'};$('#modalTitle').textContent=titles[name];$('#modalSubtitle').textContent={plan:'An introduction to whole-number place value. Built for an FE classroom.',slides:'Question slides are immediately followed by their answer slides.',notes:'These notes are visible on this screen. Open them before projecting when needed.',display:'Choose a comfortable view. No setting is required for learning.',timer:'You control the pace. The timer never advances a slide.',keys:'Keep your attention on the class, not the controls.'}[name];({plan:renderPlan,slides:renderSlideMenu,notes:renderNotes,display:renderDisplay,timer:renderTimer,keys:renderKeys})[name]();$('#modalClose').focus();}
-function closeModal(){if(!modalName)return;$('#modalLayer').hidden=true;modalName=null;setBackgroundInert(false);if(lastFocus&&lastFocus.isConnected&&!lastFocus.closest('[hidden]'))lastFocus.focus({preventScroll:true});else $('#stage').focus({preventScroll:true});}
+function openModal(name){if(!modalName)lastFocus=document.activeElement;modalName=name;$('#modalLayer').hidden=false;$('#modalBody').scrollTop=0;setBackgroundInert(true);$('#modalDialog').classList.toggle('compact',['display','timer','keypad'].includes(name));const titles={plan:'Your complete lesson plan',slides:'Jump to a slide',notes:'Teacher notes',display:'Display & classroom controls',timer:'Classroom timer',keys:'Keyboard & presentation controls',board:'ViewBoard & touchscreen tools',keypad:'On-screen number pad'};$('#modalTitle').textContent=titles[name];$('#modalSubtitle').textContent={plan:'An introduction to whole-number place value. Built for an FE classroom.',slides:'Question slides are immediately followed by their answer slides.',notes:'These notes are visible on this screen. Open them before projecting when needed.',display:'Choose a comfortable view. No setting is required for learning.',timer:'You control the pace. The timer never advances a slide.',keys:'Keep your attention on the class, not the controls.',board:'Finger, pen or mouse. No special software or keyboard is needed for the activities.',keypad:'Tap the digits, then use the green button. Close cancels without changing your entry.'}[name];({plan:renderPlan,slides:renderSlideMenu,notes:renderNotes,display:renderDisplay,timer:renderTimer,keys:renderKeys,board:renderBoardTools,keypad:renderKeypad})[name]();$('#modalClose').focus();}
+function closeModal(){
+  if(!modalName)return;
+  const returnTo=modalName==='keypad'&&padState?padState.returnTo:null;
+  if(modalName==='keypad')padState=null;
+  if(returnTo){openModal(returnTo);return;}
+  $('#modalLayer').hidden=true;modalName=null;setBackgroundInert(false);
+  if(lastFocus&&lastFocus.isConnected&&!lastFocus.closest('[hidden]'))lastFocus.focus({preventScroll:true});
+  else $('#stage').focus({preventScroll:true});
+}
 $$('[data-open]').forEach(btn=>btn.addEventListener('click',()=>openModal(btn.dataset.open)));$('#modalClose').addEventListener('click',closeModal);$('#modalLayer').addEventListener('click',e=>{if(e.target===$('#modalLayer'))closeModal();});
 function planTable(withButtons=true){return '<table class="plan-table"><thead><tr><th>Minutes</th><th>Focus</th><th>What happens</th><th>Slides</th></tr></thead><tbody>'+phases().map(p=>'<tr><td>'+p.start+'–'+p.end+'</td><td>'+escapeHTML(p.name)+'</td><td>'+escapeHTML(PHASE_DESCRIPTIONS[p.name])+'</td><td>'+(withButtons?'<button type="button" data-jump="'+p.first+'">'+p.first+'–'+p.last+'</button>':p.first+'–'+p.last)+'</td></tr>').join('')+'</tbody></table>';}
 const sourceText='<div class="sources"><p><strong>Curriculum reference:</strong> Pearson Edexcel Functional Skills Qualification in Mathematics, Level 1 and Level 2 specification, Issue 1 (June 2019), printed page 10, Level 1 number content 1; and page 13, problem-solving expectations. Reading, writing, ordering and comparing whole numbers up to one million is the main focus. Place value and zero placeholders underpin that focus.</p><p><a href="https://qualifications.pearson.com/content/dam/pdf/Functional-skills/Mathematics/2019/specification-and-sample-assessments/pearson-edexcel-functional-skills-in-maths-spec-l1-l2.pdf" target="_blank" rel="noopener noreferrer">Pearson specification (official PDF; opens online)</a> · <a href="https://qualifications.pearson.com/en/qualifications/edexcel-functional-skills/maths-2019.html" target="_blank" rel="noopener noreferrer">Pearson qualification page (opens online)</a></p><p>Source checked 6 September 2026. Original classroom practice questions, not official assessment questions or Pearson-endorsed materials. All prices and scenarios are fictional. This introductory lesson does not cover the full Level 1 syllabus. Decimal work, negative numbers and other topics belong in later lessons. No external material is needed to run the presentation.</p></div>';
@@ -284,7 +488,7 @@ function resetTimer(){timerRunning=false;timerRemaining=timerInitial;$('#timerAn
 setInterval(()=>{if(timerRunning&&secondsNow()<=0){timerRunning=false;timerRemaining=0;$('#timerAnnouncement').textContent='Time is up. Finish your thought and get ready to compare.';showToast('Time is up. Finish your thought, then compare.');}updateTimerDisplay();},200);
 $('#timerQuick').addEventListener('click',toggleTimer);
 $$('.timer-for-slide').forEach(btn=>btn.addEventListener('click',()=>{const s=LESSON[Number(btn.closest('.slide').dataset.n)-1];setTimer(durationOf(s)*60,true);showToast(durationOf(s)+'-minute timer started. It will not change your slide.');}));
-function renderTimer(){$('#modalBody').innerHTML='<div class="timer-large" id="timerLarge">'+timeString(secondsNow())+'</div><div class="timer-presets" role="group" aria-label="Timer presets">'+[1,3,5,8,10].map(m=>'<button type="button" data-minutes="'+m+'">'+m+' min</button>').join('')+'</div><div class="timer-edit"><label for="customMinutes">Custom minutes</label><input id="customMinutes" type="number" min="1" max="90" step="1" value="'+Math.round(timerInitial/60)+'"><button class="small-btn" type="button" id="setCustomTimer">Set</button></div><div class="timer-actions"><button class="primary" type="button" id="timerStartPause">Start</button><button class="small-btn" type="button" id="timerReset">Reset</button></div><p class="setting-hint">The timer continues when this panel closes or you change slides. Start an activity timer only when learners are ready. There is no sound or automatic slide change.</p>';$$('[data-minutes]',$('#modalBody')).forEach(btn=>btn.addEventListener('click',()=>{setTimer(Number(btn.dataset.minutes)*60);$('#customMinutes').value=btn.dataset.minutes;}));$('#setCustomTimer').addEventListener('click',()=>{const n=Number($('#customMinutes').value);if(!Number.isInteger(n)||n<1||n>90){showToast('Choose a whole number of minutes from 1 to 90.');$('#customMinutes').focus();return;}setTimer(n*60);});$('#timerStartPause').addEventListener('click',toggleTimer);$('#timerReset').addEventListener('click',resetTimer);updateTimerDisplay();}
+function renderTimer(){$('#modalBody').innerHTML='<div class="timer-large" id="timerLarge">'+timeString(secondsNow())+'</div><div class="timer-presets" role="group" aria-label="Timer presets">'+[1,3,5,8,10].map(m=>'<button type="button" data-minutes="'+m+'">'+m+' min</button>').join('')+'</div><div class="timer-edit"><label for="customMinutes">Custom minutes</label><input id="customMinutes" type="number" min="1" max="90" step="1" value="'+Math.round(timerInitial/60)+'"><button class="small-btn" type="button" data-keypad="customMinutes">Number pad</button><button class="small-btn" type="button" id="setCustomTimer">Set</button></div><div class="timer-actions"><button class="primary" type="button" id="timerStartPause">Start</button><button class="small-btn" type="button" id="timerReset">Reset</button></div><p class="setting-hint">The timer continues when this panel closes or you change slides. Start an activity timer only when learners are ready. There is no sound or automatic slide change.</p>';$$('[data-minutes]',$('#modalBody')).forEach(btn=>btn.addEventListener('click',()=>{setTimer(Number(btn.dataset.minutes)*60);$('#customMinutes').value=btn.dataset.minutes;}));$('#setCustomTimer').addEventListener('click',()=>{const n=Number($('#customMinutes').value);if(!Number.isInteger(n)||n<1||n>90){showToast('Choose a whole number of minutes from 1 to 90.');$('#customMinutes').focus();return;}setTimer(n*60);});$('#timerStartPause').addEventListener('click',toggleTimer);$('#timerReset').addEventListener('click',resetTimer);updateTimerDisplay();}
 function renderBundle(){const data=GROUPING_VISUALS[bundleMode];$('#bundleLeftLabel').textContent=bundleMode==='ones'?'10 ones':'10 tens';$('#bundleLeft').innerHTML=data.left;$('#bundleResult').innerHTML=data.right;$('#bundleRightLabel').textContent=bundleRevealed?(bundleMode==='ones'?'1 ten':'1 hundred'):'One new group';$('#bundleResult').hidden=!bundleRevealed;$('#bundlePlaceholder').hidden=bundleRevealed;$('#bundleStatus').textContent=bundleRevealed?(bundleMode==='ones'?'10 ones = 1 ten. The amount is still 10.':'10 tens = 1 hundred. The amount is still 100.'):'Count ten, then make one new group.';$('#bundleButton').textContent=bundleRevealed?'Show the separate groups again':'Bundle them together';$$('[data-bundle]').forEach(btn=>{const selected=btn.dataset.bundle===bundleMode;btn.classList.toggle('selected',selected);btn.setAttribute('aria-pressed',selected);});}
 $$('[data-bundle]').forEach(btn=>btn.addEventListener('click',()=>{bundleMode=btn.dataset.bundle;bundleRevealed=false;renderBundle();}));$('#bundleButton').addEventListener('click',()=>{bundleRevealed=!bundleRevealed;renderBundle();});
 const places=[1000000,100000,10000,1000,100,10,1];
@@ -307,23 +511,36 @@ function swapBuilderCards(a,b){
 }
 function renderBuilder(focusIndex=null){
   const labels=['Ten thousands','Thousands','Hundreds','Tens','Ones'];
-  $('#digitBuilder').innerHTML=digits.map((d,i)=>'<button class="digit-card '+(selectedCard===i?'selected':'')+'" type="button" draggable="true" data-card="'+i+'" aria-pressed="'+(selectedCard===i)+'" aria-label="'+labels[i]+' card, digit '+d+'. Select this card, then another card, to swap. Or drag it onto another card."><strong>'+d+'</strong><span>'+labels[i]+'</span></button>').join('');
-  $$('[data-card]').forEach(btn=>{
-    const index=Number(btn.dataset.card);
-    btn.addEventListener('click',()=>{
-      if(selectedCard===null){selectedCard=index;$('#builderReadout').classList.remove('builder-warning');$('#builderReadout').textContent='Digit '+digits[index]+' selected. Now choose another card.';renderBuilder(index);}
-      else if(selectedCard===index){selectedCard=null;$('#builderReadout').textContent='Selection cleared. Choose two cards to swap.';renderBuilder(index);}
-      else swapBuilderCards(selectedCard,index);
+  const container=$('#digitBuilder');
+  // Keep card elements alive through pointerup, touchend and the native click.
+  // Replacing a touched card before touchend can swallow the next tap in Chromium.
+  if(!container.querySelector('[data-card]')){
+    container.innerHTML=digits.map((d,i)=>'<button class="digit-card" type="button" draggable="true" data-card="'+i+'"><strong></strong><span></span></button>').join('');
+    $$('[data-card]',container).forEach(btn=>{
+      const index=Number(btn.dataset.card);
+      btn.addEventListener('click',()=>{
+        if(selectedCard===null){selectedCard=index;$('#builderReadout').classList.remove('builder-warning');$('#builderReadout').textContent='Digit '+digits[index]+' selected. Now choose another card.';renderBuilder(index);}
+        else if(selectedCard===index){selectedCard=null;$('#builderReadout').textContent='Selection cleared. Choose two cards to swap.';renderBuilder(index);}
+        else swapBuilderCards(selectedCard,index);
+      });
+      btn.addEventListener('dragstart',e=>{if(touchCardDrag){e.preventDefault();return;}draggedCard=index;selectedCard=null;e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',String(index));btn.classList.add('drag-source');});
+      btn.addEventListener('dragover',e=>{if(draggedCard===null)return;e.preventDefault();e.dataTransfer.dropEffect='move';if(draggedCard!==index)btn.classList.add('drop-target');});
+      btn.addEventListener('dragleave',e=>{if(!btn.contains(e.relatedTarget))btn.classList.remove('drop-target');});
+      btn.addEventListener('drop',e=>{e.preventDefault();const source=draggedCard;if(source!==null)swapBuilderCards(source,index);});
+      btn.addEventListener('dragend',()=>{draggedCard=null;$$('.digit-card').forEach(card=>card.classList.remove('drag-source','drop-target'));});
     });
-    btn.addEventListener('dragstart',e=>{draggedCard=index;selectedCard=null;e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',String(index));btn.classList.add('drag-source');});
-    btn.addEventListener('dragover',e=>{if(draggedCard===null)return;e.preventDefault();e.dataTransfer.dropEffect='move';if(draggedCard!==index)btn.classList.add('drop-target');});
-    btn.addEventListener('dragleave',e=>{if(!btn.contains(e.relatedTarget))btn.classList.remove('drop-target');});
-    btn.addEventListener('drop',e=>{e.preventDefault();const source=draggedCard;if(source!==null)swapBuilderCards(source,index);});
-    btn.addEventListener('dragend',()=>{draggedCard=null;$$('.digit-card').forEach(card=>card.classList.remove('drag-source','drop-target'));});
+  }
+  $$('[data-card]',container).forEach((btn,i)=>{
+    btn.querySelector('strong').textContent=String(digits[i]);
+    btn.querySelector('span').textContent=labels[i];
+    btn.classList.toggle('selected',selectedCard===i);
+    btn.classList.remove('drag-source','drop-target');
+    btn.setAttribute('aria-pressed',String(selectedCard===i));
+    btn.setAttribute('aria-label',labels[i]+' card, digit '+digits[i]+'. Tap this card, then another card, to swap. Or drag it onto another card.');
   });
   if(focusIndex!==null)$('[data-card="'+focusIndex+'"]').focus({preventScroll:true});
 }
-$('#builderReset').addEventListener('click',()=>{digits=[6,4,0,2,8];selectedCard=null;draggedCard=null;renderBuilder();$('#builderReadout').classList.remove('builder-warning');$('#builderReadout').textContent='Tap two cards to swap, or drag one onto another.';});
+$('#builderReset').addEventListener('click',()=>{digits=[6,4,0,2,8];selectedCard=null;draggedCard=null;renderBuilder();$('#builderReadout').classList.remove('builder-warning');$('#builderReadout').textContent='Tap two cards to swap, or drag with your finger, pen or mouse.';});
 $('#codeForm').addEventListener('submit',e=>{
   e.preventDefault();
   const field=$('#missionCode'),code=field.value.replace(/\s/g,'');
@@ -409,6 +626,7 @@ function handlePresentationKey(e){
   }
   if(handled)e.preventDefault();
 }
+document.addEventListener('keydown',handleKeypadKey,true);
 document.addEventListener('keydown',handlePresentationKey,true);
 
 function renderChapterRail(){
@@ -434,7 +652,7 @@ function toggleFocusView(force){
   $('#focusExitButton').hidden=!focusView;
   $('#stage').focus({preventScroll:true});
   scaleDeck();
-  if(focusView)showToast('Focus view · ← / → change slides · P brings the toolbar back.');
+  if(focusView)showToast('Focus view · use Previous / Next below. Tap Exit focus to restore the toolbar.');
 }
 $('#focusButton').addEventListener('click',()=>toggleFocusView());
 $('#focusExitButton').addEventListener('click',()=>toggleFocusView(false));
@@ -470,13 +688,15 @@ $('#explorerNumber').addEventListener('input',()=>$('#explorerNumber').removeAtt
 // These swipes supplement buttons on a touch screen and never capture activity controls.
 let touchOrigin=null;
 $('#stage').addEventListener('touchstart',e=>{
-  if(modalName||e.touches.length!==1||e.target.closest('button,input,select,textarea,a,form')){touchOrigin=null;return;}
-  touchOrigin={x:e.touches[0].clientX,y:e.touches[0].clientY};
+  if(!swipeEnabled||modalName||e.touches.length!==1||e.target.closest('button,input,select,textarea,a,form')){touchOrigin=null;return;}
+  touchOrigin={id:e.touches[0].identifier,x:e.touches[0].clientX,y:e.touches[0].clientY,time:performance.now()};
 },{passive:true});
 $('#stage').addEventListener('touchend',e=>{
-  if(!touchOrigin||!e.changedTouches.length)return;
-  const dx=e.changedTouches[0].clientX-touchOrigin.x,dy=e.changedTouches[0].clientY-touchOrigin.y;touchOrigin=null;
-  if(Math.abs(dx)>85&&Math.abs(dx)>Math.abs(dy)*2)navigate(current+(dx<0?1:-1));
+  if(!touchOrigin||!e.changedTouches.length||!swipeEnabled)return;
+  const touch=Array.from(e.changedTouches).find(t=>t.identifier===touchOrigin.id);
+  if(!touch)return;
+  const dx=touch.clientX-touchOrigin.x,dy=touch.clientY-touchOrigin.y,elapsed=performance.now()-touchOrigin.time;touchOrigin=null;
+  if(elapsed<800&&Math.abs(dx)>100&&Math.abs(dx)>Math.abs(dy)*2.5)navigate(current+(dx<0?1:-1));
 },{passive:true});
 $('#stage').addEventListener('touchcancel',()=>{touchOrigin=null;},{passive:true});
 function updateKeyboardCue(){
@@ -487,7 +707,216 @@ function updateKeyboardCue(){
   cue.title=editing?'This field is being edited. Escape returns to slide navigation.':'See all keyboard shortcuts';
 }
 document.addEventListener('focusin',updateKeyboardCue);
-document.addEventListener('focusout',()=>queueMicrotask(updateKeyboardCue));
+document.addEventListener('focusout',()=>Promise.resolve().then(updateKeyboardCue));
+/* Ordinary controls use ONE native click listener per action: no duplicate
+   touchend/pointerup navigation handlers. Digit cards are a dedicated pointer
+   widget: a completed tap activates once, and its compatibility click is suppressed. */
+function applyBoardMode(){
+  document.body.classList.toggle('board-mode',boardMode);
+  $('#boardToolsButton').setAttribute('aria-label','Open ViewBoard and touchscreen tools. Large controls '+(boardMode?'on':'off')+'.');
+  scaleDeck();
+}
+function renderBoardTools(){
+  $('#modalBody').innerHTML=`
+    <div class="board-panel-intro"><strong>Ready for a shared touchscreen.</strong><br>
+    Use one deliberate tap on a button. The same controls accept a finger, a pen acting as a pointer, a mouse, or a keyboard.</div>
+    <div class="board-setting"><div><strong>Large board controls</strong><p>Larger buttons, answer tabs and activity controls. Enabled by default in this edition.</p></div>
+      <button class="small-btn" type="button" id="boardSizeToggle" aria-pressed="${boardMode}">${boardMode?'On · turn off':'Off · turn on'}</button></div>
+    <div class="board-setting"><div><strong>Swipe to change slides</strong><p>Off by default so a hand movement across the lesson does not reveal the next slide. Previous / Next always work.</p></div>
+      <button class="small-btn" type="button" id="boardSwipeToggle" aria-pressed="${swipeEnabled}">${swipeEnabled?'On · turn off':'Off · turn on'}</button></div>
+    <div class="board-actions">
+      <button class="small-btn" type="button" id="boardFullscreen">${fullscreenElement()?'Exit full screen':'Full screen'}</button>
+      <button class="small-btn" type="button" id="boardFocus">${focusView?'Exit focus view':'Focus view'}</button>
+      <button class="small-btn" type="button" id="boardBlank">Blank the screen</button>
+    </div>
+    <div class="board-test"><button class="primary" type="button" id="boardTapTest">Tap to test</button><div><p>Registered taps: <strong id="boardTapCount" role="status">${touchTestCount}</strong></p><p>Each tap should add exactly one.</p><button class="small-btn" type="button" id="boardTestReset">Reset count</button></div></div>
+    <p class="board-help"><strong>Numbers and cards:</strong> use Number pad on the chart, final mission or custom timer. Tap two digit cards to swap them, or drag one onto another. Keyboard arrows still move slides when you are not editing a field.</p>
+    <p class="board-help"><strong>Connecting a laptop by HDMI?</strong> The picture connection alone does not carry touch. Connect the laptop to the matching USB TOUCH port as well. A supported USB-C connection and suitable cable can carry picture and touch together; the correct ports depend on the model.</p>
+    <p class="board-help"><strong>Open the HTML in a browser.</strong> Use the connected computer’s browser, or a compatible browser on the board. Do not import it as a static slide/image. If an annotation layer is covering the browser, return to pointer/interaction mode or close that layer before tapping.</p>
+    <p class="board-help"><strong>Check before the class:</strong> tap the test button above with the board itself. If the laptop mouse works but the board does not, check the touch cable, selected input and board settings. These controls were checked with browser-emulated touch and pen input; this file has not been physically tested on your particular ViewBoard.</p>
+    <p class="board-source">Official connection guidance: <a href="https://www.viewsonic.com/solution/kb/en_US/connecting-devices/setting-up-device-connections" target="_blank" rel="noopener noreferrer">ViewSonic: setting up touch connections (online)</a></p>`;
+  $('#boardSizeToggle').addEventListener('click',()=>{
+    boardMode=!boardMode;storage.set('boardMode',boardMode?'on':'off');applyBoardMode();
+    const button=$('#boardSizeToggle');button.textContent=boardMode?'On · turn off':'Off · turn on';button.setAttribute('aria-pressed',String(boardMode));
+  });
+  $('#boardSwipeToggle').addEventListener('click',()=>{
+    swipeEnabled=!swipeEnabled;touchOrigin=null;storage.set('boardSwipes',swipeEnabled?'on':'off');
+    const button=$('#boardSwipeToggle');button.textContent=swipeEnabled?'On · turn off':'Off · turn on';button.setAttribute('aria-pressed',String(swipeEnabled));
+  });
+  $('#boardFullscreen').addEventListener('click',toggleFullscreen);
+  $('#boardFocus').addEventListener('click',()=>{closeModal();toggleFocusView();});
+  $('#boardBlank').addEventListener('click',()=>{closeModal();toggleBlackout();});
+  $('#boardTapTest').addEventListener('click',()=>{$('#boardTapCount').textContent=String(++touchTestCount);});
+  $('#boardTestReset').addEventListener('click',()=>{touchTestCount=0;$('#boardTapCount').textContent='0';});
+}
+function openKeypad(targetId){
+  const field=document.getElementById(targetId);
+  if(!field)return;
+  const config={
+    explorerNumber:{label:'Build a whole number: 0 to 1,000,000',max:7,done:'Build this number'},
+    missionCode:{label:'Enter your six code digits in A–F order',max:6,done:'Try this code'},
+    customMinutes:{label:'Custom timer: 1 to 90 minutes',max:2,done:'Set this timer'}
+  }[targetId];
+  if(!config)return;
+  padState={id:targetId,config,value:field.value.replace(/\D/g,'').slice(0,config.max),returnTo:modalName};
+  field.blur();
+  openModal('keypad');
+}
+function renderKeypad(){
+  if(!padState)return;
+  const c=padState.config;
+  $('#modalBody').innerHTML='<div class="keypad-wrap"><p class="keypad-label">'+escapeHTML(c.label)+'</p><div class="keypad-display" id="keypadDisplay" role="status" aria-live="polite"></div><div class="keypad-grid" role="group" aria-label="Number pad">'+['1','2','3','4','5','6','7','8','9','clear','0','back'].map(k=>'<button type="button" data-pad-key="'+k+'" aria-label="'+(k==='back'?'Delete the last digit':k==='clear'?'Clear all digits':k)+'">'+(k==='back'?'⌫ Delete':k==='clear'?'Clear':k)+'</button>').join('')+'</div><button type="button" class="primary keypad-done" id="keypadDone">'+escapeHTML(c.done)+'</button><p class="keypad-status" id="keypadStatus">Close cancels without changing your entry.</p></div>';
+  $$('[data-pad-key]').forEach(button=>button.addEventListener('click',()=>pressPadKey(button.dataset.padKey)));
+  $('#keypadDone').addEventListener('click',commitKeypad);
+  updateKeypad();
+}
+function updateKeypad(){
+  if(!padState||!$('#keypadDisplay'))return;
+  $('#keypadDisplay').textContent=padState.value||'—';
+  $('#keypadDisplay').setAttribute('aria-label',padState.value?'Entered digits: '+padState.value.split('').join(' '):'No digits entered');
+}
+function pressPadKey(key){
+  if(!padState)return;
+  if(key==='clear')padState.value='';
+  else if(key==='back')padState.value=padState.value.slice(0,-1);
+  else if(/^\d$/.test(key)){
+    if(padState.value.length>=padState.config.max){$('#keypadStatus').textContent='Maximum '+padState.config.max+' digits. Use Delete or Clear to edit.';return;}
+    padState.value+=key;
+  }
+  $('#keypadStatus').textContent='Close cancels without changing your entry.';updateKeypad();
+}
+function commitKeypad(){
+  if(!padState)return;
+  const state=padState,n=Number(state.value);
+  let error='';
+  if(state.value==='')error='Enter a number first.';
+  else if(state.id==='explorerNumber'&&n>1000000)error='Use a whole number no greater than 1,000,000.';
+  else if(state.id==='missionCode'&&state.value.length!==6)error='Enter all six digits in A–F order.';
+  else if(state.id==='customMinutes'&&(n<1||n>90))error='Choose a whole number of minutes from 1 to 90.';
+  if(error){$('#keypadStatus').textContent=error;return;}
+  closeModal();
+  if(state.id==='customMinutes'){
+    setTimer(n*60);$('#customMinutes').value=String(n);$('#setCustomTimer').focus({preventScroll:true});return;
+  }
+  const field=document.getElementById(state.id);
+  field.value=state.value;
+  field.dispatchEvent(new Event('input',{bubbles:true}));
+  const form=field.form;
+  if(form){
+    if(typeof form.requestSubmit==='function')form.requestSubmit();
+    else form.querySelector('button[type="submit"]').click();
+  }
+}
+function handleKeypadKey(e){
+  if(modalName!=='keypad'||!padState||e.ctrlKey||e.altKey||e.metaKey||e.isComposing)return;
+  const editing=isEditingControl(e.target);
+  if(!editing&&(/^[0-9]$/.test(e.key)||e.key==='Backspace'||e.key==='Delete')){
+    e.preventDefault();e.stopImmediatePropagation();pressPadKey(e.key==='Backspace'?'back':e.key==='Delete'?'clear':e.key);
+  }
+}
+document.addEventListener('click',e=>{
+  const button=e.target instanceof Element?e.target.closest('[data-keypad]'):null;
+  if(button&&!button.disabled)openKeypad(button.dataset.keypad);
+});
+
+function cancelTouchCardDrag(){
+  const drag=touchCardDrag;touchCardDrag=null;
+  if(drag&&drag.button&&drag.button.releasePointerCapture){
+    try{if(drag.button.hasPointerCapture(drag.id))drag.button.releasePointerCapture(drag.id);}catch(e){/* The card may already be detached. */}
+  }
+  $$('.digit-card').forEach(card=>card.classList.remove('touch-dragging','drop-target'));
+}
+function beginTouchCardDrag(id,x,y,button){
+  if(modalName||!$('#blackout').hidden)return;
+  touchCardDrag={id,x,y,source:Number(button.dataset.card),button,moved:false,target:null};
+  if(button.setPointerCapture){try{button.setPointerCapture(id);}catch(e){/* Touch-event fallback has no pointer capture. */}}
+}
+function moveTouchCardDrag(id,x,y){
+  const d=touchCardDrag;if(!d||d.id!==id)return false;
+  if(!d.moved&&Math.hypot(x-d.x,y-d.y)<12)return false;
+  d.moved=true;d.button.classList.add('touch-dragging');
+  const hit=document.elementFromPoint(x,y),target=hit&&hit.closest('[data-card]');
+  d.target=target?Number(target.dataset.card):null;
+  $$('.digit-card').forEach(card=>card.classList.toggle('drop-target',Number(card.dataset.card)===d.target&&d.target!==d.source));
+  return true;
+}
+function endTouchCardDrag(id,x,y){
+  const d=touchCardDrag;if(!d||d.id!==id)return false;
+  if(!d.moved){
+    const hit=document.elementFromPoint(x,y),button=hit&&hit.closest('[data-card]');
+    blockedDragClick={until:performance.now()+800,x,y};
+    cancelTouchCardDrag();
+    // A card tap is part of this pointer-driven widget. Some embedded browsers
+    // omit the native click immediately after a drag, so invoke the existing
+    // action exactly once and suppress only its subsequent compatibility click.
+    if(button===d.button)d.button.click();
+    return true;
+  }
+  moveTouchCardDrag(id,x,y);
+  const target=d.target;
+  blockedDragClick={until:performance.now()+800,x,y};
+  cancelTouchCardDrag();
+  if(target!==null&&target!==d.source)swapBuilderCards(d.source,target);
+  else $('#builderReadout').textContent='No swap made. Drop onto another card, or tap two cards to swap.';
+  return true;
+}
+// Suppress only the compatibility click following a handled card gesture. A fresh pointer
+// contact clears this marker, so the next deliberate tap is never swallowed.
+document.addEventListener('click',e=>{
+  if(blockedDragClick&&performance.now()<blockedDragClick.until&&e.detail!==0&&Math.hypot(e.clientX-blockedDragClick.x,e.clientY-blockedDragClick.y)<40){
+    e.preventDefault();e.stopImmediatePropagation();blockedDragClick=null;
+  }
+},true);
+const touchPointers=new Set();
+function clearTouchFeedback(){$$('.touch-pressed').forEach(button=>button.classList.remove('touch-pressed'));}
+if('PointerEvent' in window){
+  document.addEventListener('pointerdown',e=>{
+    blockedDragClick=null;
+    const button=e.target instanceof Element?e.target.closest('button'):null;
+    if(button&&!button.disabled)button.classList.add('touch-pressed');
+    if(e.pointerType!=='touch'&&e.pointerType!=='pen')return;
+    touchPointers.add(e.pointerId);
+    if(touchPointers.size>1||e.isPrimary===false){cancelTouchCardDrag();return;}
+    if(button&&button.matches('[data-card]'))beginTouchCardDrag(e.pointerId,e.clientX,e.clientY,button);
+  },true);
+  document.addEventListener('pointermove',e=>{
+    if(moveTouchCardDrag(e.pointerId,e.clientX,e.clientY)&&e.cancelable)e.preventDefault();
+  },{passive:false});
+  document.addEventListener('pointerup',e=>{
+    touchPointers.delete(e.pointerId);clearTouchFeedback();
+    if(endTouchCardDrag(e.pointerId,e.clientX,e.clientY)&&e.cancelable)e.preventDefault();
+  },true);
+  document.addEventListener('pointercancel',e=>{touchPointers.delete(e.pointerId);cancelTouchCardDrag();clearTouchFeedback();},true);
+}else{
+  // Older embedded Chromium: native taps still activate buttons; this supports card drags.
+  document.addEventListener('touchstart',()=>{blockedDragClick=null;},{capture:true,passive:true});
+  $('#digitBuilder').addEventListener('touchstart',e=>{
+    blockedDragClick=null;
+    if(e.touches.length!==1){cancelTouchCardDrag();return;}
+    const button=e.target.closest('[data-card]');if(!button)return;
+    const t=e.touches[0];beginTouchCardDrag(t.identifier,t.clientX,t.clientY,button);
+  },{passive:true});
+  document.addEventListener('touchmove',e=>{
+    if(e.touches.length!==1){cancelTouchCardDrag();return;}
+    const t=e.touches[0];if(moveTouchCardDrag(t.identifier,t.clientX,t.clientY)&&e.cancelable)e.preventDefault();
+  },{passive:false});
+  document.addEventListener('touchend',e=>{
+    for(const t of Array.from(e.changedTouches))if(endTouchCardDrag(t.identifier,t.clientX,t.clientY)&&e.cancelable)e.preventDefault();
+  },{passive:false});
+  document.addEventListener('touchcancel',cancelTouchCardDrag,{passive:true});
+}
+// Long-press menus on an activity control must not replace a drag. Ordinary text,
+// links and browser zoom remain available elsewhere.
+document.addEventListener('contextmenu',e=>{
+  if(boardMode&&e.target instanceof Element&&e.target.closest('button'))e.preventDefault();
+});
+window.addEventListener('blur',()=>{touchPointers.clear();cancelTouchCardDrag();clearTouchFeedback();});
+if('ResizeObserver' in window){
+  const layoutObserver=new ResizeObserver(()=>scaleDeck());
+  ['.topbar','#chapterRail','.bottom-bar'].forEach(selector=>layoutObserver.observe($(selector)));
+}
+
+applyBoardMode();
 renderChapterRail();
 applyDisplay();updatePace();renderExplorer();renderBuilder();updatePartition();renderBundle();navigate(fromHash(),{focus:false,hash:false});updateTimerDisplay();scaleDeck();
 </script></body></html>
